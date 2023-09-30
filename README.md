@@ -109,7 +109,19 @@ project.geany
 # (which is called by configure script))
 Makefile
 
-``` 
+```
+
+## Cleanup Makefile Stuff
+
+There are default Makefile commands being used, but more than likely, you will eventually want to *extend* the Automake Rules for cleaning up your project.
+```
+As the GNU Standards aren’t always explicit as to which files should be removed by which rule, we’ve adopted a heuristic that we believe was first formulated by François Pinard:
+
+    If make built it, and it is commonly something that one would want to rebuild (for instance, a .o file), then mostlyclean should delete it.
+    Otherwise, if make built it, then clean should delete it.
+    If configure built it, then distclean should delete it.
+    If the maintainer built it (for instance, a .info file), then maintainer-clean should delete it. However maintainer-clean should not delete anything that needs to exist in order to run ‘./configure && make’. 
+```
 
 
 ### References: 
